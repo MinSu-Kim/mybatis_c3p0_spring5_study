@@ -18,8 +18,6 @@ import mybatis_c3p0_spring5_study.persistence.DepartmentDao;
 @ContextConfiguration(locations = { "file:src/main/resources/root-context.xml" })
 public class DepartmentServiceTest {
 	
-//	private static final Log log = LogFactory.getLog(MyBatisTest.class);
-
 	@Inject
 	private DepartmentDao dao;
 	

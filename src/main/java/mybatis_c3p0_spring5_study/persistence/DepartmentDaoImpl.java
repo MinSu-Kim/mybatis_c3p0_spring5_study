@@ -5,8 +5,6 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import org.apache.ibatis.logging.Log;
-import org.apache.ibatis.logging.LogFactory;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
