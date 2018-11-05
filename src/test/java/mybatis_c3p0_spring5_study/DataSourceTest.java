@@ -15,7 +15,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations= {"file:src/main/resources/*.xml"})
+@ContextConfiguration(locations= {"file:src/main/resources/root-context.xml"})
 public class DataSourceTest {
 	private static final Log log = LogFactory.getLog(DataSourceTest.class);
 	
@@ -23,9 +23,14 @@ public class DataSourceTest {
 	private DataSource ds;
 	
 	@Test
+	public void testDataSource() {
+		log.debug("DataSource " + ds);
+	}
+	
+	@Test
 	public void testConnection() {
 		try(Connection con = ds.getConnection()){
-			log.trace("Connection " + con);
+			log.debug("Connection " + con);
 			Assert.assertNotNull(con);
 		}catch(Exception e) {
 			e.printStackTrace();
