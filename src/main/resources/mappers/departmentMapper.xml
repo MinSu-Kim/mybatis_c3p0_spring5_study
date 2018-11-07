@@ -4,4 +4,20 @@
 	<select id="selectDepartmentByAll" resultType="Department">
 		select deptno, deptname, floor from department
 	</select>
+	
+	<select id="selectDepartmentByNo" parameterType="Department" resultType="Department">
+		select deptno, deptname, floor from department where deptno = #{deptNo}
+	</select>
+	
+	<insert id="insertDepartment" parameterType="Department">
+		insert into department values(#{deptNo}, #{deptName}, #{floor});
+	</insert>
+	
+	<update id="updateDepartment" parameterType="Department">
+		update department set deptname=#{deptName}, floor=#{floor} where deptno = #{deptNo}
+	</update>
+	
+	<delete id="deleteDepartment" parameterType="Department">
+		delete from department where deptno = #{deptNo}
+	</delete>
 </mapper>

@@ -6,8 +6,10 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.junit.Assert;
+import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.junit.runners.MethodSorters;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -16,6 +18,7 @@ import mybatis_c3p0_spring5_study.persistence.DepartmentDao;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "file:src/main/resources/root-context.xml" })
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class DepartmentServiceTest {
 	
 	@Inject
@@ -23,38 +26,35 @@ public class DepartmentServiceTest {
 	
 
 	@Test
-	public void testDepartmentByAll() throws SQLException {
+	public void test1DepartmentByAll() throws SQLException {
 		List<Department> list = dao.selectDepartmentByAll();
 		Assert.assertNotNull(list);
 	}
 
-/*	@Test
-	public void testDepartmentByCode() throws SQLException {
-		Department department = service.findDepartmentByCode("D001");
-		log.trace(department);
+	@Test
+	public void test2DepartmentByCode() throws SQLException {
+		Department department = dao.selectDepartmentByNo(new Department(1));
 		Assert.assertNotNull(department);
 	}
 
 	@Test
-	public void testRegisterDepartment() throws SQLException {
-		Department department = new Department("D005", "개발", 10);
-		int res = service.registerDepartment(department);
-		log.trace("result : " + res);
+	public void test3InsertDepartment() throws SQLException {
+		Department department = new Department(5, "개발", 10);
+		int res = dao.insertDepartment(department);
 		Assert.assertEquals(1, res);
 	}
 
 	@Test
-	public void testUnRegisterDepartment() throws SQLException {
-		int res = service.unRegisterDepartment("D005");
-		log.trace("result : " + res);
+	public void test4UpdateDepartment() throws SQLException {
+		Department department = new Department(5, "개발2", 20);
+		int res = dao.updateDepartment(department);
 		Assert.assertEquals(1, res);
 	}
 
 	@Test
-	public void testUpdateDepartment() throws SQLException {
-		Department department = new Department("D004", "영업", 15);
-		int res = service.updateDepartment(department);
-		log.trace("result : " + res);
+	public void test5DeleteDepartment() throws SQLException {
+		Department department = new Department(5);
+		int res = dao.deleteDepartment(department);
 		Assert.assertEquals(1, res);
-	}*/
+	}
 }

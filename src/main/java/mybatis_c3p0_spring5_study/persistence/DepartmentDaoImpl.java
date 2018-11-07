@@ -24,26 +24,22 @@ public class DepartmentDaoImpl implements DepartmentDao {
 	
 	@Override
 	public int deleteDepartment(Department department) throws SQLException {
-		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.delete(namespace + ".deleteDepartment", department);
 	}
 
 	@Override
 	public int insertDepartment(Department department) throws SQLException {
-		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.insert(namespace+".insertDepartment", department);
 	}
 
 	@Override
 	public int updateDepartment(Department department) throws SQLException {
-		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.update(namespace + ".updateDepartment", department);
 	}
 
 	@Override
 	public Department selectDepartmentByNo(Department department) throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
+		return sqlSession.selectOne(namespace + ".selectDepartmentByNo", department);
 	}
 
 }
