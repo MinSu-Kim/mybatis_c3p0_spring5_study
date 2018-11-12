@@ -33,7 +33,6 @@ public class DepartmentService {
 	}
 
 	public List<Department> listAll() throws SQLException {
-		System.out.println(dao);
 		return dao.selectDepartmentByAll();
 	}
 }

@@ -35,4 +35,6 @@
 	<context:component-scan base-package="mybatis_c3p0_spring5_study.dao"/> 
 	
 	<context:component-scan base-package="mybatis_c3p0_spring5_study.service"/>
+	
+	<bean id="erpMain" class="mybatis_c3p0_spring5_study.ErpMain" init-method="initComponent"/>
 </beans>
