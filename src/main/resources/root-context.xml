@@ -21,13 +21,18 @@
 
  	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"/>
-		<property name="configLocation" value="classpath:/mybatis-config.xml"/>
-		<property name="mapperLocations" value="classpath:mappers/**/*Mapper.xml"/>
+		<property name="configLocation" value="classpath:/mybatis-config.xml"/>     <!-- MyBatis 설정파일 위치 -->
+		<property name="mapperLocations" value="classpath:mappers/**/*Mapper.xml"/> <!-- mapper파일 위치 설정 -->
 	</bean>
 	
+	<!-- SqlSessionTemplate - 트랜잭션 관리나 쓰레드 처리의안정성을 보장해 주고 데이터베이스의 연결과 종료를 책임지는 클래스 -->
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate" destroy-method="clearCache">
+		<!-- 생성자로 주입하여 설정 -->
 		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory" />
 	</bean>
 	
-	<context:component-scan base-package="mybatis_c3p0_spring5_study.persistence"/> 
+	<!-- 스프링에서 아래 설정한 패키지를 스캔하여 Bean으로 등록 -->
+	<context:component-scan base-package="mybatis_c3p0_spring5_study.dao"/> 
+	
+	<context:component-scan base-package="mybatis_c3p0_spring5_study.service"/>
 </beans>

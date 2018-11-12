@@ -1,4 +1,4 @@
-package mybatis_c3p0_spring5_study.persistence;
+package mybatis_c3p0_spring5_study.dao;
 
 import java.sql.SQLException;
 import java.util.List;

@@ -13,18 +13,17 @@ import org.junit.runners.MethodSorters;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import mybatis_c3p0_spring5_study.dao.DepartmentDao;
 import mybatis_c3p0_spring5_study.dto.Department;
-import mybatis_c3p0_spring5_study.persistence.DepartmentDao;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "file:src/main/resources/root-context.xml" })
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class DepartmentServiceTest {
+public class DepartmentDaoTest {
 	
 	@Inject
 	private DepartmentDao dao;
 	
-
 	@Test
 	public void test1DepartmentByAll() throws SQLException {
 		List<Department> list = dao.selectDepartmentByAll();

@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mybatis_c3p0_spring5_study.mappers.DepartmentMapper">
+
+<!--     
+     #{} 규칙 
+     - 파라미터가 여러 속성을 가진 객체인 경우 #{name}은 getNum()혹은 setNum()을 의미
+     - 파라미터가 하나이고 기본자료형이나 문자열 인경우 값이 그대로 전달
+     - 파라미터가 Map타입인 경우 #{num}은 Map객체의 키 값이 num인 값을 검색 
+--> 
+
 	<select id="selectDepartmentByAll" resultType="Department">
 		select deptno, deptname, floor from department
 	</select>

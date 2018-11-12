@@ -1,4 +1,4 @@
-package mybatis_c3p0_spring5_study.persistence;
+package mybatis_c3p0_spring5_study.dao;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -10,11 +10,11 @@ import org.springframework.stereotype.Repository;
 
 import mybatis_c3p0_spring5_study.dto.Department;
 
-@Repository
+@Repository /* @Repository - DAO객체를 Spring에게 인식시키기 위한 의미*/
 public class DepartmentDaoImpl implements DepartmentDao {
 	private String namespace = "mybatis_c3p0_spring5_study.mappers.DepartmentMapper";
 	
-	@Inject
+	@Inject /* Spring이 생성해서  주입 */
 	private SqlSession sqlSession;
 	
 	@Override
