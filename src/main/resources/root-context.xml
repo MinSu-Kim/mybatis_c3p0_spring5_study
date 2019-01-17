@@ -12,11 +12,13 @@
 		http://www.springframework.org/schema/tx
 		http://www.springframework.org/schema/tx/spring-tx.xsd">
 
+	<context:property-placeholder location="classpath:/application.properties" />
+
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
-		<property name="driverClass" value="com.mysql.jdbc.Driver" />
-		<property name="jdbcUrl" value="jdbc:mysql://127.0.0.1:3306/mysql_study?useSSL=false" />
-		<property name="user" value="user_mysql_study" />
-		<property name="password" value="rootroot" />
+		<property name="driverClass" value="${datasource.driver}" />
+		<property name="jdbcUrl" value="${datasource.url}" />
+		<property name="user" value="${datasource.username}" />
+		<property name="password" value="${datasource.password}" />
 		<property name="maxPoolSize" value="100" />
 		<property name="maxIdleTime" value="600" />
 		<property name="idleConnectionTestPeriod" value="300" />
@@ -51,4 +53,18 @@
 	</bean> 
 	
 	<tx:annotation-driven transaction-manager="transactionManager"/>
+	
+<!-- 	<aop:config proxy-target-class="true">
+		<aop:pointcut id="serviceOperation" expression="execution(* mybatis_c3p0_spring5_study.service.*.*(..))" />
+		<aop:advisor id="transactionAdvisor" pointcut-ref="serviceOperation" advice-ref="txAdvice"/>
+	</aop:config>
+	
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="registerTransaction" rollback-for="Exception"/>
+			<tx:method name="unRegisterTransaction" rollback-for="Exception"/>
+		</tx:attributes> 
+	
+	</tx:advice>
+-->
 </beans>

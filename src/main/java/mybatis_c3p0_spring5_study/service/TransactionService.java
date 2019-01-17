@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import mybatis_c3p0_spring5_study.dao.DepartmentDao;
@@ -13,6 +14,7 @@ import mybatis_c3p0_spring5_study.dto.Department;
 import mybatis_c3p0_spring5_study.dto.Employee;
 
 @Service
+@Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
 public class TransactionService {
 	
 	@Inject
@@ -25,6 +27,7 @@ public class TransactionService {
 	public int registerTransaction(Department department, Employee employee) throws SQLException {
 		int res = deptDao.insertDepartment(department);
 		res += empDao.insertEmployee(employee);
+		if (res !=2 ) throw new RuntimeException();
 		return res;
 	}
 
@@ -32,6 +35,7 @@ public class TransactionService {
 	public int unRegisterTransaction(Department department, Employee employee) throws SQLException {
 		int res = empDao.deleteEmployee(employee);
 		res += deptDao.deleteDepartment(department);
+		if (res !=2 ) throw new RuntimeException();
 		return res;
 	}
 }
