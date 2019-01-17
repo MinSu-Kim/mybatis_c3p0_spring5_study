@@ -15,7 +15,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations= {"file:src/main/resources/root-context.xml"})
 public class DataSourceTest extends AbstractTest{
-//	private static final Log log = LogFactory.getLog(DataSourceTest.class);
 	
 	@Inject
 	private DataSource ds;

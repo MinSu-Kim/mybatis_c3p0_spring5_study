@@ -54,17 +54,4 @@
 	
 	<tx:annotation-driven transaction-manager="transactionManager"/>
 	
-<!-- 	<aop:config proxy-target-class="true">
-		<aop:pointcut id="serviceOperation" expression="execution(* mybatis_c3p0_spring5_study.service.*.*(..))" />
-		<aop:advisor id="transactionAdvisor" pointcut-ref="serviceOperation" advice-ref="txAdvice"/>
-	</aop:config>
-	
-	<tx:advice id="txAdvice" transaction-manager="transactionManager">
-		<tx:attributes>
-			<tx:method name="registerTransaction" rollback-for="Exception"/>
-			<tx:method name="unRegisterTransaction" rollback-for="Exception"/>
-		</tx:attributes> 
-	
-	</tx:advice>
--->
 </beans>
