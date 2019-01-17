@@ -15,6 +15,8 @@ import mybatis_c3p0_spring5_study.ui.table.DepartmentTablePanel;
 
 @SuppressWarnings("serial")
 public class ErpMain extends JFrame {
+	public ErpMain() {
+	}
 
 	private JPanel contentPane;
 	
@@ -41,6 +43,5 @@ public class ErpMain extends JFrame {
         
         setVisible(true);
 	}
-
 
 }

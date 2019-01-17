@@ -1,7 +1,5 @@
 package mybatis_c3p0_spring5_study.dto;
 
-import java.util.Arrays;
-
 public class Employee {
 	private int empNo;
 	private String empName;
@@ -9,11 +7,8 @@ public class Employee {
 	private Employee manager;
 	private int salary;
 	private Department dept;
-	private byte[] pic;
-	
-	public Employee() {
-		// TODO Auto-generated constructor stub
-	}
+
+	public Employee() {}
 
 	public Employee(int empNo) {
 		this.empNo = empNo;
@@ -26,18 +21,6 @@ public class Employee {
 		this.manager = manager;
 		this.salary = salary;
 		this.dept = dept;
-	}
-
-	
-	public Employee(int empNo, String empName, String title, Employee manager, int salary, Department dept,
-			byte[] pic) {
-		this.empNo = empNo;
-		this.empName = empName;
-		this.title = title;
-		this.manager = manager;
-		this.salary = salary;
-		this.dept = dept;
-		this.pic = pic;
 	}
 
 	public int getEmpNo() {
@@ -88,18 +71,10 @@ public class Employee {
 		this.dept = dept;
 	}
 
-	public byte[] getPic() {
-		return pic;
-	}
-
-	public void setPic(byte[] pic) {
-		this.pic = pic;
-	}
-
 	@Override
 	public String toString() {
-		return String.format("Employee [empNo=%s, empName=%s, title=%s, manager=%s, salary=%s, dept=%s, pic=%s]", empNo,
-				empName, title, manager, salary, dept, Arrays.toString(pic));
+		return String.format("Employee [empNo=%s, empName=%s, title=%s, manager=%s, salary=%s, dept=%s]", empNo,
+				empName, title, manager, salary, dept);
 	}
 
 }

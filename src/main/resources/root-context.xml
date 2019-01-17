@@ -9,7 +9,7 @@
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
 		http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring.xsd
-		http://www.springframework.org/schema/tx
+				http://www.springframework.org/schema/tx
 		http://www.springframework.org/schema/tx/spring-tx.xsd">
 
 	<context:property-placeholder location="classpath:/application.properties" />
@@ -47,11 +47,21 @@
 		<property name="title" value="erp application" />
 	</bean>
 
-	<!-- Spring 트랜잭션 처리 -->
+	<!-- Spring 트랜잭션 처리1  @Transactional Annotation -->
 	<bean id = "transactionManager" class = "org.springframework.jdbc.datasource.DataSourceTransactionManager"> 
 		<property name = "dataSource" ref = "dataSource" /> 
 	</bean> 
 	
 	<tx:annotation-driven transaction-manager="transactionManager"/>
 	
+	<!-- Spring 트랜잭션 처리2 AOP로 트랜잭션구현 -->
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="tr*" propagation="REQUIRED"/>
+		</tx:attributes>
+	</tx:advice>
+	<aop:config>
+		<aop:pointcut id="servicePublicMethod" expression="execution(public * mybatis_c3p0_spring5_study..*Service.*(..))" />
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="servicePublicMethod"/>
+	</aop:config>
 </beans>
