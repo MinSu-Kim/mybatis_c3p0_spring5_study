@@ -11,7 +11,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "file:src/main/resources/root-context.xml" })
+@ContextConfiguration(locations = { "file:src/main/resources/context-root.xml" })
 public class MyBatisTest extends AbstractTest{
 	
 	@Inject

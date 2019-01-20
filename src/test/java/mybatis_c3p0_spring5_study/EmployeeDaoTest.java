@@ -17,7 +17,7 @@ import mybatis_c3p0_spring5_study.dto.Department;
 import mybatis_c3p0_spring5_study.dto.Employee;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "file:src/main/resources/root-context.xml" })
+@ContextConfiguration(locations = { "file:src/main/resources/context-root.xml" })
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class EmployeeDaoTest extends AbstractTest{
 	

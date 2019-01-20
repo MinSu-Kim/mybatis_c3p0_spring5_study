@@ -17,7 +17,7 @@ import mybatis_c3p0_spring5_study.dao.DepartmentDao;
 import mybatis_c3p0_spring5_study.dto.Department;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "file:src/main/resources/root-context.xml" })
+@ContextConfiguration(locations = { "file:src/main/resources/context-root.xml" })
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class DepartmentDaoTest extends AbstractTest{
 	

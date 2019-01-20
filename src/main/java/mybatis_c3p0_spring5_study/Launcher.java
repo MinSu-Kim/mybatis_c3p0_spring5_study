@@ -7,7 +7,7 @@ public class Launcher {
 	public void launch() {
 		System.out.println("launch()-start");
 //		try(ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("root-context.xml")){}
-		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("root-context.xml");
+		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("context-root.xml");
 		System.out.println("launch()-end");
 	}
 	
