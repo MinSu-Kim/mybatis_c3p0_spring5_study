@@ -61,4 +61,11 @@ public class DepartmentDaoTest extends AbstractTest{
 		int res = dao.deleteDepartment(department);
 		Assert.assertEquals(1, res);
 	}
+	
+	@Test
+	public void test6selectNextNo() {
+		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
+		int res = dao.selectNextNo();
+		Assert.assertNotEquals(1, res);
+	}
 }

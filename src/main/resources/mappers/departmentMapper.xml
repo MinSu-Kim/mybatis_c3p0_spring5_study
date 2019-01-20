@@ -28,4 +28,8 @@
 	<delete id="deleteDepartment" parameterType="Department">
 		delete from department where deptno = #{deptNo}
 	</delete>
+	
+	<select id="selectNextNo" resultType="int">
+		select max(deptno)+1 as nextNo from department
+	</select>
 </mapper>

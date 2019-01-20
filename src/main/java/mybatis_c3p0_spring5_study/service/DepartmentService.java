@@ -1,6 +1,5 @@
 package mybatis_c3p0_spring5_study.service;
 
-import java.sql.SQLException;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -16,23 +15,27 @@ public class DepartmentService {
 	@Inject
 	private DepartmentDao dao;
 
-	public void register(Department department) throws SQLException {
+	public void register(Department department) {
 		dao.insertDepartment(department);
 	}
 
-	public Department read(Department department) throws SQLException {
+	public Department read(Department department){
 		return dao.selectDepartmentByNo(department);
 	}
 
-	public void modifiy(Department department) throws SQLException {
+	public void modifiy(Department department)  {
 		dao.updateDepartment(department);
 	}
 
-	public void remove(Department department) throws SQLException {
+	public void remove(Department department)  {
 		dao.deleteDepartment(department);
 	}
 
-	public List<Department> listAll() throws SQLException {
+	public List<Department> listAll()  {
 		return dao.selectDepartmentByAll();
+	}
+	
+	public int nextDeptNo() {
+		return dao.selectNextNo();
 	}
 }

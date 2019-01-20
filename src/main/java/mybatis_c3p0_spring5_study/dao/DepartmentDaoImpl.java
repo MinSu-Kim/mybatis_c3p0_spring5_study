@@ -1,6 +1,5 @@
 package mybatis_c3p0_spring5_study.dao;
 
-import java.sql.SQLException;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -23,23 +22,28 @@ public class DepartmentDaoImpl implements DepartmentDao {
 	}
 	
 	@Override
-	public int deleteDepartment(Department department) throws SQLException {
+	public int deleteDepartment(Department department) {
 		return sqlSession.delete(namespace + ".deleteDepartment", department);
 	}
 
 	@Override
-	public int insertDepartment(Department department) throws SQLException {
+	public int insertDepartment(Department department)  {
 		return sqlSession.insert(namespace+".insertDepartment", department);
 	}
 
 	@Override
-	public int updateDepartment(Department department) throws SQLException {
+	public int updateDepartment(Department department)  {
 		return sqlSession.update(namespace + ".updateDepartment", department);
 	}
 
 	@Override
-	public Department selectDepartmentByNo(Department department) throws SQLException {
+	public Department selectDepartmentByNo(Department department) {
 		return sqlSession.selectOne(namespace + ".selectDepartmentByNo", department);
+	}
+
+	@Override
+	public int selectNextNo() {
+		return sqlSession.selectOne(namespace + ".selectNextNo");
 	}
 
 }
