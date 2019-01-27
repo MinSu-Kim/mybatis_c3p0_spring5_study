@@ -1,17 +1,14 @@
 package mybatis_c3p0_spring5_study.ui.content;
 
-import javax.swing.JPanel;
+public interface AbstractMainPanel<T> {	
+	void clearObject();
 
-@SuppressWarnings("serial")
-public abstract class AbstractMainPanel<T> extends JPanel {	
-	public abstract void clearObject();
+	T getObject() throws Exception;
 
-	public abstract T getObject() throws Exception;
+	String nextNo();
 
-	public abstract String nextNo();
+	void setSelectedTitle();
 
-	public abstract void setSelectedTitle();
-
-	public abstract void setObject(T item);
+	void setObject(T item);
 	
 }

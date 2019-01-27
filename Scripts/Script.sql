@@ -1,0 +1,1 @@
+select max(empno)+1 as nextNo from employee

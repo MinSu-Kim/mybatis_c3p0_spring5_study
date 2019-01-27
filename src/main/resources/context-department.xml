@@ -28,6 +28,7 @@
 				<ref bean="departmentContent"/>
 				<ref bean="buttonPanel" />
 				<ref bean="departmentTable"/>
+				<ref bean="employeeContent"/>
 			</list>
 		</property>
 	</bean>
@@ -88,8 +89,9 @@
 		<property name="popupMenu" ref="popupMenu"/>
 	</bean>
 	
-	<bean id ="departmentContent" class="mybatis_c3p0_spring5_study.ui.content.DepartmentPanel" init-method="initComponent"/>
+	<bean id ="departmentContent" class="mybatis_c3p0_spring5_study.ui.content.DepartmentPanel" init-method="initComponents"/>
 	
+	<bean id ="employeeContent" class="mybatis_c3p0_spring5_study.ui.content.EmployeePanel" init-method="loadComb"/>
 	
 	<bean id="addNewButtonActionListener" class="mybatis_c3p0_spring5_study.ui.button.AddNewButtonActionListener">
 		<property name="contentPanel">

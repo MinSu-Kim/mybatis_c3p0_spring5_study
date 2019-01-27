@@ -1,6 +1,6 @@
 package mybatis_c3p0_spring5_study.dao;
 
-import java.sql.SQLException;
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -17,13 +17,33 @@ public class EmployeeDaoImpl implements EmployeeDao {
 	private SqlSession sqlSession;
 	
 	@Override
-	public int insertEmployee(Employee employee) throws SQLException {
+	public int insertEmployee(Employee employee){
 		return sqlSession.insert(namespace+".insertEmployee", employee);
 	}
 
 	@Override
-	public int deleteEmployee(Employee employee) throws SQLException {
+	public int deleteEmployee(Employee employee) {
 		return sqlSession.delete(namespace+".deleteEmployee", employee);
+	}
+
+	@Override
+	public int updateEmployee(Employee employee) {
+		return sqlSession.update(namespace+".updateEmployee", employee);
+	}
+
+	@Override
+	public List<Employee> selectEmployeeByAll() {
+		return sqlSession.selectList(namespace+".selectEmployeeByAll");
+	}
+
+	@Override
+	public Employee selectEmployeeByNo(Employee employee) {
+		return sqlSession.selectOne(namespace+".selectEmployeeByNo", employee);
+	}
+
+	@Override
+	public int selectNextNo() {
+		return sqlSession.selectOne(namespace + ".selectNextNo");
 	}
 
 }

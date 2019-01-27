@@ -11,4 +11,33 @@
 		delete from employee
 		where empno = #{empNo}
 	</delete>
+	
+	<update id="updateEmployee" parameterType="Employee">
+		UPDATE employee
+		SET empname=#{empName}, title=#{title}, manager=#{manager}, salary=#{salary}, dno=#{dept}
+		WHERE empno=#{empNo};
+	</update>
+	
+	<resultMap type="Employee" id="resultEmp">
+		<id column="empNo" property="empNo"/>
+		<result column="empName" property="empName"/>
+		<result column="title" property="title"/>
+		<result column="manager" property="manager.empNo"/>
+		<result column="salary" property="salary"/>
+		<association property="dno" resultMap="mybatis_c3p0_spring5_study.mappers.DepartmentMapper.resultDept"/>
+	</resultMap>
+	
+	<select id="selectEmployeeByAll" resultMap="resultEmp">
+		SELECT empNo, empName, title, manager, salary, dno
+		FROM employee;
+	</select>
+	
+	<select id="selectEmployeeByNo" parameterType="Employee" resultMap="resultEmp">
+		SELECT empNo, empName, title, manager, salary, dno
+		FROM employee;
+	</select>
+	
+	<select id="selectNextNo" resultType="int">
+		select max(empno)+1 as nextNo from employee;
+	</select>
 </mapper>

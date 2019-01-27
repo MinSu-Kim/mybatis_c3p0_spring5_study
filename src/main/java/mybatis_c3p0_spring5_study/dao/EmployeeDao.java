@@ -1,22 +1,20 @@
 package mybatis_c3p0_spring5_study.dao;
 
-import java.sql.SQLException;
+import java.util.List;
 
 import mybatis_c3p0_spring5_study.dto.Employee;
 
 public interface EmployeeDao {
 	
-	int insertEmployee(Employee employee) throws SQLException;
+	int insertEmployee(Employee employee);
 
-	int deleteEmployee(Employee employee) throws SQLException;
+	int deleteEmployee(Employee employee);
 
-/*	int updateEmployee(Employee employee) throws SQLException;
+	int updateEmployee(Employee employee);
 
-	List<Employee> selectEmployeeByAll() throws SQLException;
+	List<Employee> selectEmployeeByAll();
 
-	Employee selectEmployeeByNo(Employee employee) throws SQLException;
+	Employee selectEmployeeByNo(Employee employee);
 	
-	int transactionInsertEmployeeAndDepartmentApi(Employee emp, Department dept);
-	
-	int transactionInsertEmployeeAndDepartment(Employee emp, Department dept);*/
+	int selectNextNo();
 }
