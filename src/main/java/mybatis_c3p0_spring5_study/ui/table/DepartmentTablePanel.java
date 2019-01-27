@@ -40,7 +40,8 @@ public class DepartmentTablePanel extends AbstractTablePanel<Department> {
 	@Override
 	public Department getItem() throws Exception {
 		int row = getSelectedRowIndex();
-		return new Department((int)table.getValueAt(row, 0));
+		Department dept = new Department((int)table.getValueAt(row, 0));
+		return items.get(items.indexOf(dept));
 	}
 
 	@Override

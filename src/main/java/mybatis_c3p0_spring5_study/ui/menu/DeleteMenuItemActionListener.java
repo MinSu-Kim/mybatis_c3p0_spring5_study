@@ -1,14 +1,16 @@
-package mybatis_c3p0_spring5_study.ui.button;
+package mybatis_c3p0_spring5_study.ui.menu;
 
 import java.awt.event.ActionEvent;
 
 import javax.swing.JOptionPane;
 
-public class DeleteButtonActionListener<T> extends ContentActionListener<T> {
+import mybatis_c3p0_spring5_study.ui.button.ContentActionListener;
+
+public class DeleteMenuItemActionListener<T> extends ContentActionListener<T> {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-        try {
+		try {
 			tablePanel.removeRow();
 		} catch (Exception e1) {
 			e1.printStackTrace();

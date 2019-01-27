@@ -43,17 +43,53 @@
 		</property>
 	</bean>
 
-	<bean id="departmentTable" class="mybatis_c3p0_spring5_study.ui.table.DepartmentTablePanel" init-method="init" />
-	<bean id ="departmentContent" class="mybatis_c3p0_spring5_study.ui.content.DepartmentPanel" init-method="initComponent"/>
-	
-	<bean id="addNewButton" class="mybatis_c3p0_spring5_study.ui.button.ActionListenerButton" init-method="init">
-		<property name="actionListener">
-			<ref bean="addNewButtonActionListener"/>
-		</property>
-		<property name="text">
-			<value>Add New</value>
+	<bean id="popupMenu" class="mybatis_c3p0_spring5_study.ui.menu.PopupMenu">
+		<property name="menu">
+			<list>
+				<ref bean="deleteMenu"/>
+				<ref bean="updateMenu"/>
+			</list>
 		</property>
 	</bean>
+	
+	<bean id="updateMenu" class="mybatis_c3p0_spring5_study.ui.menu.ActionListenerMenu" init-method="init">
+		<property name="actionListener">
+			<ref bean="updateMenuItemActionListener"/>
+		</property>
+		<property name="text">
+			<value>수정</value>
+		</property>
+	</bean>
+	
+	<bean id="updateMenuItemActionListener" class="mybatis_c3p0_spring5_study.ui.menu.UpdateMenuItemActionListener">
+		<property name="tablePanel">
+			<ref bean="departmentTable"/>
+		</property>
+		<property name="contentPanel" ref="departmentContent"/>
+	</bean>
+	
+	<bean id="deleteMenu" class="mybatis_c3p0_spring5_study.ui.menu.ActionListenerMenu" init-method="init">
+		<property name="actionListener">
+			<ref bean="deleteMenuItemActionListener"/>
+		</property>
+		<property name="text">
+			<value>삭제</value>
+		</property>
+	</bean>
+	
+	<bean id="deleteMenuItemActionListener" class="mybatis_c3p0_spring5_study.ui.menu.DeleteMenuItemActionListener">
+		<property name="tablePanel">
+			<ref bean="departmentTable"/>
+		</property>
+	</bean>
+	
+	
+	<bean id="departmentTable" class="mybatis_c3p0_spring5_study.ui.table.DepartmentTablePanel" init-method="init" >
+		<property name="popupMenu" ref="popupMenu"/>
+	</bean>
+	
+	<bean id ="departmentContent" class="mybatis_c3p0_spring5_study.ui.content.DepartmentPanel" init-method="initComponent"/>
+	
 	
 	<bean id="addNewButtonActionListener" class="mybatis_c3p0_spring5_study.ui.button.AddNewButtonActionListener">
 		<property name="contentPanel">
@@ -61,15 +97,6 @@
 		</property>
 		<property name="tablePanel">
 			<ref bean="departmentTable"/>
-		</property>
-	</bean>
-	
-	<bean id="deleteButton" class="mybatis_c3p0_spring5_study.ui.button.ActionListenerButton" init-method="init">
-		<property name="actionListener">
-			<ref bean="deleteButtonActionListener"/>
-		</property>
-		<property name="text">
-			<value>Delete</value>
 		</property>
 	</bean>
 	
@@ -81,4 +108,23 @@
 			<ref bean="departmentTable"/>
 		</property>
 	</bean>
+	
+	<bean id="addNewButton" class="mybatis_c3p0_spring5_study.ui.button.ActionListenerButton" init-method="init">
+		<property name="actionListener">
+			<ref bean="addNewButtonActionListener"/>
+		</property>
+		<property name="text">
+			<value>추가</value>
+		</property>
+	</bean>
+	
+	<bean id="deleteButton" class="mybatis_c3p0_spring5_study.ui.button.ActionListenerButton" init-method="init">
+		<property name="actionListener">
+			<ref bean="deleteButtonActionListener"/>
+		</property>
+		<property name="text">
+			<value>삭제</value>
+		</property>
+	</bean>
+	
 </beans>

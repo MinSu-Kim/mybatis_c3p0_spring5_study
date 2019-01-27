@@ -4,7 +4,6 @@ import java.awt.BorderLayout;
 import java.util.List;
 
 import javax.swing.JPanel;
-import javax.swing.JPopupMenu;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
@@ -13,6 +12,8 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
 
+import mybatis_c3p0_spring5_study.ui.menu.PopupMenu;
+
 @SuppressWarnings("serial")
 public abstract class AbstractTablePanel<T> extends JPanel {
 	protected JTable table;
@@ -20,7 +21,7 @@ public abstract class AbstractTablePanel<T> extends JPanel {
 	protected Object[] colNames;
 	protected List<T> items;
 	private JScrollPane scrollPane;
-
+	
 	public AbstractTablePanel(String title) {
 		initComponents(title);
 		setColumnNames();
@@ -39,6 +40,11 @@ public abstract class AbstractTablePanel<T> extends JPanel {
 		scrollPane.setViewportView(table);
 	}
 
+	public void setPopupMenu(PopupMenu popupMenu) {
+		scrollPane.setComponentPopupMenu(popupMenu);
+		table.setComponentPopupMenu(popupMenu);
+	}
+	
 	public void setItems(List<T> items) {
 		this.items = items;
 	}
@@ -83,11 +89,6 @@ public abstract class AbstractTablePanel<T> extends JPanel {
 		
 		table.setModel(new NonEditableModel(rows, colNames));
 		setAlignWith();
-	}
-	
-	public void setPopupMenu(JPopupMenu popUpMenu) {
-		scrollPane.setComponentPopupMenu(popUpMenu);
-		table.setComponentPopupMenu(popUpMenu);
 	}
 	
 	protected class NonEditableModel extends DefaultTableModel {
