@@ -32,6 +32,8 @@
 	
 	<import resource="classpath:context-jdbc.xml"/>
 	<import resource="classpath:context-department.xml"/>
+	<import resource="classpath:context-employee.xml"/>
+	<import resource="classpath:context-main.xml"/>
 	
 	<!-- 스프링에서 아래 설정한 패키지를 스캔하여 Bean으로 등록 -->
 	<context:component-scan base-package="mybatis_c3p0_spring5_study.dao" />

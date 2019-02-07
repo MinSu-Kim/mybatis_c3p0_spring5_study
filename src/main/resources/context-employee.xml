@@ -12,10 +12,8 @@
 		http://www.springframework.org/schema/tx
 		http://www.springframework.org/schema/tx/spring-tx.xsd">
 
-	<bean id="departmentTable" class="mybatis_c3p0_spring5_study.ui.table.DepartmentTablePanel" init-method="init" >
-		<property name="popupMenu" ref="popupMenu"/>
-	</bean>
 	
-	<bean id ="departmentContent" class="mybatis_c3p0_spring5_study.ui.content.DepartmentPanel" init-method="initComponents"/>
+	<bean id ="employeeContent" class="mybatis_c3p0_spring5_study.ui.content.EmployeePanel" init-method="loadComb"/>
 	
+
 </beans>

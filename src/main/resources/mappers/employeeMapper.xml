@@ -14,7 +14,7 @@
 	
 	<update id="updateEmployee" parameterType="Employee">
 		UPDATE employee
-		SET empname=#{empName}, title=#{title}, manager=#{manager}, salary=#{salary}, dno=#{dept}
+		SET empname=#{empName}, title=#{title}, manager=#{manager.empNo}, salary=#{salary}, dno=#{dept.deptNo}
 		WHERE empno=#{empNo};
 	</update>
 	
@@ -24,7 +24,7 @@
 		<result column="title" property="title"/>
 		<result column="manager" property="manager.empNo"/>
 		<result column="salary" property="salary"/>
-		<association property="dno" resultMap="mybatis_c3p0_spring5_study.mappers.DepartmentMapper.resultDept"/>
+		<association property="dept" resultMap="mybatis_c3p0_spring5_study.mappers.DepartmentMapper.resultDept"/>
 	</resultMap>
 	
 	<select id="selectEmployeeByAll" resultMap="resultEmp">

@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring.xsd
+		http://www.springframework.org/schema/tx
+		http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+	<bean id="mainFrame" class="mybatis_c3p0_spring5_study.ui.ErpMain" init-method="initComponent">
+		<property name="contentPane">
+			<ref bean="mainPanel"/>
+		</property>
+		<property name="title" value="erp application" />
+	</bean>
+	
+	<bean id="mainPanel" class="mybatis_c3p0_spring5_study.ui.BoxLayoutPanel" init-method="initComponent">
+		<property name="axis">
+			<value>1</value>
+		</property>
+		<property name="panelComponents">
+			<list >
+				<ref bean="departmentContent"/>
+				<ref bean="buttonPanel" />
+				<ref bean="departmentTable"/>
+				<ref bean="employeeContent"/>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="buttonPanel" class="mybatis_c3p0_spring5_study.ui.BoxLayoutPanel" init-method="initComponent">
+		<property name="axis"  value="0" />
+		<!--  "0" corresponds to BoxLayout.X_AXIS -->
+		<property name="panelComponents">
+			<list>
+				<ref bean="addNewButton"/>
+				<ref bean="deleteButton"/>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="popupMenu" class="mybatis_c3p0_spring5_study.ui.menu.PopupMenu">
+		<property name="menu">
+			<list>
+				<ref bean="deleteMenu"/>
+				<ref bean="updateMenu"/>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="updateMenu" class="mybatis_c3p0_spring5_study.ui.menu.ActionListenerMenu" init-method="init">
+		<property name="actionListener">
+			<ref bean="updateMenuItemActionListener"/>
+		</property>
+		<property name="text">
+			<value>수정</value>
+		</property>
+	</bean>
+	
+	<bean id="updateMenuItemActionListener" class="mybatis_c3p0_spring5_study.ui.menu.UpdateMenuItemActionListener">
+		<property name="tablePanel">
+			<ref bean="departmentTable"/>
+		</property>
+		<property name="contentPanel" ref="departmentContent"/>
+	</bean>
+	
+	<bean id="deleteMenu" class="mybatis_c3p0_spring5_study.ui.menu.ActionListenerMenu" init-method="init">
+		<property name="actionListener">
+			<ref bean="deleteMenuItemActionListener"/>
+		</property>
+		<property name="text">
+			<value>삭제</value>
+		</property>
+	</bean>
+	
+	<bean id="deleteMenuItemActionListener" class="mybatis_c3p0_spring5_study.ui.menu.DeleteMenuItemActionListener">
+		<property name="tablePanel">
+			<ref bean="departmentTable"/>
+		</property>
+	</bean>
+	
+	
+	<bean id="addNewButtonActionListener" class="mybatis_c3p0_spring5_study.ui.button.AddNewButtonActionListener">
+		<property name="contentPanel">
+			<ref bean="departmentContent"/>
+		</property>
+		<property name="tablePanel">
+			<ref bean="departmentTable"/>
+		</property>
+	</bean>
+	
+	<bean id="deleteButtonActionListener" class="mybatis_c3p0_spring5_study.ui.button.DeleteButtonActionListener">
+		<property name="contentPanel">
+			<ref bean="departmentContent"/>
+		</property>
+		<property name="tablePanel">
+			<ref bean="departmentTable"/>
+		</property>
+	</bean>
+	
+	<bean id="addNewButton" class="mybatis_c3p0_spring5_study.ui.button.ActionListenerButton" init-method="init">
+		<property name="actionListener">
+			<ref bean="addNewButtonActionListener"/>
+		</property>
+		<property name="text">
+			<value>추가</value>
+		</property>
+	</bean>
+	
+	<bean id="deleteButton" class="mybatis_c3p0_spring5_study.ui.button.ActionListenerButton" init-method="init">
+		<property name="actionListener">
+			<ref bean="deleteButtonActionListener"/>
+		</property>
+		<property name="text">
+			<value>삭제</value>
+		</property>
+	</bean>
+	
+</beans>

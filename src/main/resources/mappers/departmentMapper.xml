@@ -11,7 +11,7 @@
 	<resultMap type="Department" id="resultDept">
 		<id column="deptno" property="deptNo"/>
 		<result column="deptname" property="deptName"/>
-		<result column=""floor" property="floor"/>
+		<result column="floor" property="floor"/>
 	</resultMap>
 
 	<select id="selectDepartmentByAll" resultType="Department">
